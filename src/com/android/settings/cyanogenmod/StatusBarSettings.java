@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
@@ -36,6 +37,8 @@ import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
 import android.text.format.DateFormat;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -81,7 +84,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DATE = "status_bar_date";
     private static final String STATUS_BAR_DATE_STYLE = "status_bar_date_style";
     private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
-
+    private static final String PREF_COLOR_PICKER = "clock_color";
+    private static final String PREF_FONT_STYLE = "font_style";
+    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+  
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
@@ -96,6 +102,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarDate;
     private ListPreference mStatusBarDateStyle;
     private ListPreference mStatusBarDateFormat;
+    private ColorPickerPreference mColorPicker;
+    private ListPreference mFontStyle;
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarBatteryShowPercent;
     private SwitchPreference mStatusBarGreeting;
@@ -143,13 +151,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
           return null;
        }
        
-        mTicker = (SwitchPreference) prefSet.findPreference(KEY_STATUS_BAR_TICKER);
-        final boolean tickerEnabled = systemUiResources.getBoolean(systemUiResources.getIdentifier(
-            "com.android.systemui:bool/enable_ticker", null, null));
-        mTicker.setChecked(Settings.System.getInt(getContentResolver(),
-            Settings.System.STATUS_BAR_TICKER_ENABLED, tickerEnabled ? 1 : 0) == 1);
-        mTicker.setOnPreferenceChangeListener(this);
-        
+       
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
@@ -235,9 +237,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
 
-        if (TelephonyManager.getDefault().getPhoneCount() <= 1) {
-            removePreference(Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS);
-        }
        mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
         mColorPicker.setOnPreferenceChangeListener(this);
         int intColor = Settings.System.getInt(getActivity().getContentResolver(),
@@ -251,6 +250,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mColorPicker.setSummary(hexColor);
         }
         mColorPicker.setNewPreviewColor(intColor);
+
+        mFontStyle = (ListPreference) findPreference(PREF_FONT_STYLE);
+        mFontStyle.setOnPreferenceChangeListener(this);
+        mFontStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_CLOCK_FONT_STYLE,
+                4)));
+        mFontStyle.setSummary(mFontStyle.getEntry());
 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
@@ -373,11 +379,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mStatusBarBatteryShowPercent.setSummary(
                     mStatusBarBatteryShowPercent.getEntries()[index]);          
             return true; 
-       } else if (preference == mTicker) {
-              Settings.System.putInt(getContentResolver(),
-              Settings.System.STATUS_BAR_TICKER_ENABLED,
-             (Boolean) newValue ? 1 : 0);
-             return true;
        } else if (preference == mColorPicker) {
            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
                     .valueOf(newValue)));
@@ -386,6 +387,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_CLOCK_COLOR, intHex);
             return true;             
+        } else if (preference == mFontStyle) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mFontStyle.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_CLOCK_FONT_STYLE, val);
+            mFontStyle.setSummary(mFontStyle.getEntries()[index]);
+            return true;
         }
         return false;
     }

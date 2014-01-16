@@ -881,4 +881,12 @@
     <string name="status_bar_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
     <string name="status_bar_date_string_edittext_summary">Enter string</string>
 
+    <!--Status bar font -->
+    <string name="clock_font_style_title">Font</string>
+    <string name="clock_font_bold">Bold</string>
+    <string name="clock_font_condensed">Condensed</string>
+    <string name="clock_font_light">Light</string>
+    <string name="clock_font_light_italic">Light Italic</string>
+    <string name="clock_font_normal">Normal</string>
+
 </resources>
