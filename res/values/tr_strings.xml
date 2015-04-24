@@ -861,4 +861,9 @@
     <string name="pref_scrollingcache_default_disable">Default disable</string>
     <string name="pref_scrollingcache_force_disable">Force disable</string>
 
+    <!-- Status bar - Clock color -->
+    <string name="clock_color_title">Color</string>
+    <string name="status_bar_clock_style_reset">Reset color</string>
+    <string name="status_bar_clock_style_reset_message">Reset clock color?</string>
+
 </resources>
