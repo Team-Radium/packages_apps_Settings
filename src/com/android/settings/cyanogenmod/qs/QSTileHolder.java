@@ -194,7 +194,10 @@ public class QSTileHolder {
                 resourceName = "ic_dynamic_qs_adb";
                 stringId = R.string.qs_dynamic_tile_adb;
                 break;
-
+            case QSConstants.TILE_TRDS:
+                resourceName = "ic_qs_trds_on";
+                stringId = R.string.qs_tile_trds;
+                break;
             default:
                 return null;
         }
