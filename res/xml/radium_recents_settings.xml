@@ -54,4 +54,10 @@
 
     </PreferenceCategory>
 
+
+        <PreferenceScreen
+            android:key="recent_panel"
+            android:fragment="com.android.settings.radium.RecentPanel"
+            android:title="@string/recent_panel_category" />
+
 </PreferenceScreen>
