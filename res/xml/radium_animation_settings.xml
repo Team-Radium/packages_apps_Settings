@@ -31,7 +31,14 @@
                 android:entryValues="@array/toast_animation_values"
                 android:persistent="false" />
 
-	<!-- Listview animations -->
+	<!-- Custom overscroll effects -->
+        <PreferenceScreen
+            android:key="overscroll_effects"
+            android:title="@string/ui_overscroll_title"
+            android:summary="@string/overscroll_weight_summary"
+            android:fragment="com.android.settings.radium.OverscrollEffects" />
+
+        <!-- List View animations -->
         <ListPreference
             android:key="listview_animation"
             android:dialogTitle="@string/listview_animation_title"
