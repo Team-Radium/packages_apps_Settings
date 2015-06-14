@@ -35,6 +35,12 @@
         android:icon="@drawable/ic_settings_sidebar"
 	settings:advanced="true" />
 
+    <!-- App sidebar -->
+    <PreferenceScreen
+        android:key="app_sidebar"
+        android:fragment="com.android.settings.radium.AppSidebar"
+        android:title="@string/app_sidebar_title"/>
+
     <!-- Heads up notifications -->
     <Preference
          android:key="heads_up_enabled"
