@@ -154,19 +154,19 @@ public class ActionListViewSettings extends ListFragment implements
             public void remove(int which) {
                 ActionConfig item = mActionConfigsAdapter.getItem(which);
                 mActionConfigsAdapter.remove(item);
-                if (!ActionChecker.containsAction(mActivity, item, ActionConstants.ACTION_BACK)
+                if (!ActionChecker.containsAction(mActivity, item, RadiumActionConstants.ACTION_BACK)
                         || !ActionChecker.containsAction(
-                        mActivity, item, ActionConstants.ACTION_HOME)) {
+                        mActivity, item, RadiumActionConstants.ACTION_HOME)) {
                     mActionConfigsAdapter.insert(item, which);
                     showDialogInner(DLG_DELETION_NOT_ALLOWED, 0, false, false);
-                } else if (mDisableDeleteLastEntry && 
+                } else if (mDisableDeleteLastEntry &&
                     (mActionConfigs == null || mActionConfigs.size() == 0)) {
                     mActionConfigsAdapter.add(item);
                     showDialogInner(DLG_DELETION_NOT_ALLOWED, 0, false, false);
                 } else {
                     deleteIconFileIfPresent(item, true);
                     setConfig(mActionConfigs, false);
-                    if (mActionConfigs.size() == 0) {
+                    if (mActionConfigs == null || mActionConfigs.size() == 0) {
                         showDisableMessage(true);
                     }
                 }
@@ -644,24 +644,30 @@ public class ActionListViewSettings extends ListFragment implements
 
             Drawable d = null;
             String iconUri = getItem(position).getIcon();
+            if (iconUri == null) {
+                iconUri = RadiumActionConstants.ICON_EMPTY;
+            }
             if (mActionMode == POWER_MENU_SHORTCUT) {
 		/* Disabled for now till slims power menu is back!
                 d = ImageHelper.resize(
                         mActivity, PolicyHelper.getPowerMenuIconImage(mActivity,
                         getItem(position).getClickAction(),
-                        iconUri, false), 36); */
+                        iconUri, false), 48);
+                */
             } else {
-                d = ImageHelper.resize(
-                        mActivity, ActionHelper.getActionIconImage(mActivity,
-                        getItem(position).getClickAction(),
+                ActionHelper.useSystemUI = true;
+                d = ImageHelper.resize(mActivity, ActionHelper.getActionIconImage(
+                        mActivity, getItem(position).getClickAction(),
                         iconUri), 48);
+                ActionHelper.useSystemUI = false;
+            }
 
-            if ((iconUri.equals(ActionConstants.ICON_EMPTY) &&
-                    getItem(position).getClickAction().startsWith("**")) || (iconUri != null
-                    && iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER))) {
-                if (d != null) d.setTint(getResources().getColor(R.color.dslv_icon_dark));
-
-                    }
+            if (d != null) {
+                if ((iconUri.equals(RadiumActionConstants.ICON_EMPTY) &&
+                        getItem(position).getClickAction().startsWith("**")) ||
+                    iconUri.startsWith(RadiumActionConstants.SYSTEM_ICON_IDENTIFIER)) {
+                    d = ImageHelper.getColoredDrawable(d, getResources()
+                            .getColor(R.color.dslv_icon_dark));
                 }
             }
             holder.iconView.setImageDrawable(d);
