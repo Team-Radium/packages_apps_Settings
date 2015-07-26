@@ -449,6 +449,7 @@
         <item>users</item>
         <item>settings</item>
         <item>lockdown</item>
+        <item>bugreport</item>
         <item>silent</item>
     </string-array>
 
