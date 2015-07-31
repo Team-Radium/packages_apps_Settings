@@ -53,7 +53,10 @@ public class RandomStuff extends SettingsPreferenceFragment implements
 private static final String KEY_UPDATE_SETTINGS = "update_settings";
 private static final String KEY_UPDATE_SETTINGS_PACKAGE_NAME = "com.radium.ota";
 private static final String SELINUX = "selinux";
+private static final String MSIM = "msim";
+
 private SwitchPreference mSelinux;
+private SwitchPreference mMsimSwitch;
 
 
     @Override
@@ -62,7 +65,13 @@ private SwitchPreference mSelinux;
         addPreferencesFromResource(R.xml.random_stuff);
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getContentResolver();
-	       mContext = getActivity();
+        mContext = getActivity();
+
+	String mMsimCurrentValue=CMDProcessor.runSuCommand("getprop persist.radio.multisim.config").getStdout();
+	if(mMsimCurrentValue.equals("")||mMsimCurrentValue.equals(null))
+	{
+		prefSet.removePreference(mMsimSwitch);
+	}
 
         //SELinux
         mSelinux = (SwitchPreference) findPreference(SELINUX);
@@ -75,11 +84,26 @@ private SwitchPreference mSelinux;
             mSelinux.setChecked(false);
             mSelinux.setSummary(R.string.selinux_permissive_title);
         }
+
+	//MSIM Switch
+
+	mMsimSwitch=(SwitchPreference)findPreference(MSIM);
+	mMsimSwitch.setOnPreferenceChangeListener(this);
+	if(mMsimCurrentValue.equals("dsds")||mMsimCurrentValue.equals("dsda"))
+	{
+		mMsimSwitch.setChecked(true);
+		mMsimSwitch.setSummary(R.string.msim_enabled_title);
+	}
+	else
+	{
+		mMsimSwitch.setChecked(false);
+		mMsimSwitch.setSummary(R.string.msim_disabled_title);
+	}
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-         if (preference == mSelinux) {
+          if (preference == mSelinux) {
             if (newValue.toString().equals("true")) {
                 CMDProcessor.runSuCommand("setenforce 1");
                 mSelinux.setSummary(R.string.selinux_enforcing_title);
@@ -89,6 +113,20 @@ private SwitchPreference mSelinux;
             }
             return true;
           }
+	  if (preference == mMsimSwitch)
+	  {
+		if(newValue.toString().equals("true"))
+		{
+			CMDProcessor.runSuCommand("setprop persist.radio.multisim.config dsds");
+			mMsimSwitch.setSummary(R.string.msim_enabled_title);
+		}
+		else if(newValue.toString().equals("false"))
+		{
+			CMDProcessor.runSuCommand("setprop persist.radio.multisim.config none");
+			mMsimSwitch.setSummary(R.string.msim_disabled_title);
+		}
+		return true;
+	  }
          return false;
       }
 }

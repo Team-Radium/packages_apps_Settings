@@ -21,6 +21,17 @@
               android:title="@string/selinux_title"
               android:defaultValue="false" />
 
+              <Preference
+                    android:key="msim_switch"
+                    android:title="@string/msim_switch_title"
+                    android:summary="@string/msim_switch_summary"
+                    android:selectable="false"/>
+
+              <SwitchPreference
+                    android:key="msim"
+                    android:title="@string/msim_title"
+                    android:defaultValue="true" />
+
               <!-- Updater -->
         <PreferenceScreen
               android:key="update_settings"
