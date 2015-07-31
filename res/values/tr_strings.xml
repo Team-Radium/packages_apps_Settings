@@ -15,7 +15,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    
+
     <!-- About phone screen, Radium version -->
     <string name="mod_version">Radium version</string>
     <string name="mod_version_default">Unknown</string>
@@ -23,12 +23,13 @@
     <!-- About phone screen, build date -->
     <string name="build_date">Radium Build date</string>
     <string name="build_date_default" translatable="false">2014-01-01-0000</string>
-    
+
     <!-- Radium Isotopes -->
     <string name="ra_isotopes_title">Radium Isotopes</string>
     <string name="isotopes_categories">Categories</string>
     <string name="radium_lockscreen_title">Lock Screen Settings</string>
     <string name="interface_settings_title">Interface Settings</string>
+    <string name="random_stuff">RandomStuff</string>
 
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic</string>
@@ -146,7 +147,7 @@
     <string name="shortcuts_icon_picker_paypal">Paypal</string>
     <string name="shortcuts_icon_picker_calendar">Calendar</string>
     <string name="shortcuts_icon_picker_whatsapp">Whatsapp</string>
-    <string name="shortcuts_icon_picker_youtube">Youtube</string>   
+    <string name="shortcuts_icon_picker_youtube">Youtube</string>
     <string name="shortcuts_icon_picker_camera">Camera</string>
     <string name="shortcuts_icon_picker_cloud">Cloud</string>
     <string name="shortcuts_icon_picker_contact">Contact</string>
@@ -234,7 +235,7 @@
     <string name="teamviewer">Teamviewer</string>
     <string name="totalcommander">Total commander</string>
     <string name="weather">Weather</string>
-    <string name="golocker">Go locker</string>   
+    <string name="golocker">Go locker</string>
     <string name="googlecurrents">Google currents</string>
     <string name="googletalk">Google talk</string>
     <string name="gosms">Go sms</string>
@@ -260,7 +261,7 @@
     <string name="googleplus">Google plus</string>
     <string name="imdb">imdb</string>
     <string name="instagram">instagram</string>
-    <string name="lastfm">Lastfm</string>   
+    <string name="lastfm">Lastfm</string>
     <string name="maps">Maps</string>
     <string name="messages">Messages</string>
     <string name="music">Music</string>
@@ -394,7 +395,7 @@
     <string name="shortcut_action_lastapp">Last app</string>
     <string name="shortcut_action_screenshot">Screenshot</string>
     <string name="shortcut_action_torch">Torch</string>
-    <string name="default_string">Default</string> 
+    <string name="default_string">Default</string>
 
     <!-- Navigation bar visibility -->
     <string name="navigation_menu_default_jb_behavior">Show on request (default)</string>
@@ -588,7 +589,7 @@
     <!-- Ability to disable hardware keys via nav bar settings -->
     <string name="hw_keys_title">Hardware keys</string>
     <string name="hw_keys_summary">Enable hardware keys</string>
-    
+
     <!-- Selinux Switch -->
     <string name="selinux_switch_title">Selinux Switch options</string>
     <string name="selinux_switch_summary">SELinux is a set of kernel modifications and user-space tools. Changing modes can cause unwanted effects. Use at your own risk</string>
