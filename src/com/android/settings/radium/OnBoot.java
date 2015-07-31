@@ -36,11 +36,21 @@ public class OnBoot extends BroadcastReceiver {
                  Log.e(TAG, "Package not found", e);
              }
              SharedPreferences sharedpreferences = settingsContext.getSharedPreferences("com.android.settings_preferences", Context.MODE_PRIVATE);
+
              if(sharedpreferences.getBoolean("selinux", true)) {
                  CMDProcessor.runSuCommand("setenforce 1");
              } else if (!sharedpreferences.getBoolean("selinux", true)) {
                  CMDProcessor.runSuCommand("setenforce 0");
              }
+             boolean msim=sharedpreferences.getBoolean("msim" , true);
+             String msimCurrentValue=CMDProcessor.runShellCommand("cat /system/build.prop | grep persist.radio.multisim.config").getStdout();
+            if(!msimCurrentValue.equals("")||msimCurrentValue.equals(null))
+            {
+	             if(msim)
+		           CMDProcessor.runSuCommand("setprop persist.radio.multisim.config dsds");
+	             else if(!msim)
+		            CMDProcessor.runSuCommand("setprop persist.radio.multisim.config none");
+            }
         }
     }
 }

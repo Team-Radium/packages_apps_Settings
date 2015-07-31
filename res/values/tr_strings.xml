@@ -889,4 +889,9 @@
     <string name="clock_font_light_italic">Light Italic</string>
     <string name="clock_font_normal">Normal</string>
 
+    <!-- MSIM Switch -->
+    <string name="msim_title">MultiSIM Mode</string>
+    <string name="msim_enabled_title">Enabled</string>
+    <string name="msim_disabled_title">Disabled</string>
+
 </resources>
