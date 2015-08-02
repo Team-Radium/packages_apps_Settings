@@ -668,9 +668,6 @@
     <!-- Summary for "Configure lockscreen" when security gesture is enabled [CHAR LIMIT=45] -->
     <string name="unlock_set_unlock_mode_gesture">Gesture</string>
 
-    <!-- Navigation bar button color -->
-    <string name="navbar_button_tint_title">Navigation button tint</string>
-
     <!-- QuickSettings colors -->
     <string name="background_title">Background</string>
     <string name="icon_title">Icon</string>
