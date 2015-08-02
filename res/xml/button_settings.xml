@@ -74,11 +74,6 @@
             settings:advanced="true"
             android:dependency="enable_nav_bar" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="navigation_bar_tint"
-            android:title="@string/navbar_button_tint_title"
-            android:defaultValue="#ffffff" />
-
         <PreferenceScreen
             android:key="navigation_bar_ring"
             android:fragment="com.android.settings.cyanogenmod.NavRing"
