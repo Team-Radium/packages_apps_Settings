@@ -37,6 +37,7 @@ LOCAL_AAPT_FLAGS := \
     --extra-packages android.support.v7.cardview \
     --extra-packages org.antipiracy.support
 
+LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 
 include frameworks/opt/setupwizard/navigationbar/common.mk
 include $(BUILD_PACKAGE)
