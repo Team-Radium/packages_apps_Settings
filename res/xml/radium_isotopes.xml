@@ -26,9 +26,8 @@
         <!-- Custom Navbar -->
         <PreferenceScreen
         	android:key="navbar"
-        	android:title="@string/qs_navbar_title"
+        	android:title="@string/qs_navbar_tile"
         	android:fragment="com.android.settings.radium.slim.NavbarSettings"
-        	android:icon="@drawable/ic_navbar_layout"
         	settings:advanced="true" />
 
         <!-- Status bar tweaks -->

@@ -76,12 +76,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
-<<<<<<< HEAD
     private static final String KEY_ENABLE_HW_KEYS = "enable_hw_keys";
     private static final String KEY_ENABLE_NAVIGATION_BAR = "enable_nav_bar";
-=======
-    private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_NAVIGATION_RECENTS_LONG_PRESS = "navigation_recents_long_press";
     private static final String KEY_POWER_END_CALL = "power_end_call";
@@ -147,12 +143,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeMusicControls;
     private SwitchPreference mVolumeControlRingStream;
     private SwitchPreference mSwapVolumeButtons;
-<<<<<<< HEAD
     private SwitchPreference mEnableHwKeys;
     private SwitchPreference mEnableNavigationBar;
-=======
     private SwitchPreference mDisableNavigationKeys;
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
     private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mNavigationRecentsLongPressAction;
     private SwitchPreference mPowerEndCall;
@@ -183,9 +176,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mHomeAnswerCall = (SwitchPreference) findPreference(KEY_HOME_ANSWER_CALL);
 
         mHandler = new Handler();
-
-        // Force Navigation bar related options
-        mDisableNavigationKeys = (SwitchPreference) findPreference(DISABLE_NAV_KEYS);
 
         mNavigationPreferencesCat = (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
 
@@ -295,7 +285,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mVolumeWakeScreen.setDisableDependentsState(true);
             }
         }
-<<<<<<< HEAD
 
         // Enable/disable hw keys
         boolean enableHwKeys = Settings.System.getInt(getContentResolver(),
@@ -312,8 +301,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         updateDisableHwkeysOption();
         updateNavBarSettings();
-=======
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
     }
 
     private static Map<String, String> getPreferencesToRemove(ButtonSettings settings,
@@ -356,22 +343,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 needsNavigationBar = wm.needsNavigationBar();
             } catch (RemoteException e) {
             }
-
-            if (needsNavigationBar) {
-                result.put(DISABLE_NAV_KEYS, null);
-            } else {
-                // Remove keys that can be provided by the navbar
-                if (settings != null) {
-                    settings.updateDisableNavkeysOption();
-                    settings.mNavigationPreferencesCat.setEnabled(
-                            settings.mDisableNavigationKeys.isChecked());
-                    settings.updateDisableNavkeysCategories(
-                            settings.mDisableNavigationKeys.isChecked());
-                }
-            }
-        } else {
-            result.put(DISABLE_NAV_KEYS, null);
-        }
 
         if (hasPowerKey) {
             if (!Utils.isVoiceCapable(context)) {
@@ -519,10 +490,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         try {
-            // Only show the navigation bar category on devices that have a navigation bar
-            // unless we are forcing it via development settings
-            boolean forceNavbar = android.provider.Settings.Secure.getInt(resolver,
-                    android.provider.Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
                     || forceNavbar;
 
@@ -653,7 +620,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Settings.System.putInt(getContentResolver(), setting, Integer.valueOf(value));
     }
 
-<<<<<<< HEAD
     private void updateNavBarSettings() {
         boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
                 Settings.System.NAVIGATION_BAR_SHOW,
@@ -724,11 +690,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         ((Boolean) newValue) ? 1 : 0);
             return true;
         } else if (preference == mHomeLongPressAction) {
-=======
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mHomeLongPressAction) {
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
             handleActionListChange(mHomeLongPressAction, newValue,
                     Settings.System.KEY_HOME_LONG_PRESS_ACTION);
             return true;
@@ -815,13 +776,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final int defaultBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
 
-<<<<<<< HEAD
         Settings.System.putInt(context.getContentResolver(),
                 Settings.System.ENABLE_HW_KEYS, enabled ? 1 : 0);
-=======
-        Settings.Secure.putInt(context.getContentResolver(),
-                Settings.Secure.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
         CmHardwareManager cmHardwareManager =
                 (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
         cmHardwareManager.set(CmHardwareManager.FEATURE_KEY_DISABLE, !enabled);
@@ -838,19 +794,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
     }
 
-<<<<<<< HEAD
     private void updateDisableHwkeysOption() {
         boolean enabled = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_HW_KEYS, 1) == 1;
 
         mEnableHwKeys.setChecked(enabled);
-=======
-    private void updateDisableNavkeysOption() {
-        boolean enabled = Settings.Secure.getInt(getActivity().getContentResolver(),
-                Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) != 0;
-
-        mDisableNavigationKeys.setChecked(enabled);
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
     }
 
     private void updateDisableHwkeysCategories(boolean enabled) {
@@ -902,13 +850,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return;
         }
 
-<<<<<<< HEAD
         writeDisableHwkeysOption(context, Settings.System.getInt(context.getContentResolver(),
                 Settings.System.ENABLE_HW_KEYS, 1) == 1);
-=======
-        writeDisableNavkeysOption(context, Settings.Secure.getInt(context.getContentResolver(),
-                Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) != 0);
->>>>>>> parent of 04daa2b... Navbar Tweaks [1/2]
     }
 
 
