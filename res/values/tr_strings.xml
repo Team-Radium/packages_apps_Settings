@@ -823,6 +823,7 @@
     <string name="navbar_cat">Navigation bar</string>
     <string name="navbar_dimensions_reset_message">Reset all dimensions entries to default?</string>
     <string name="navbar_button_style_reset_message">Reset all style entries to default?</string>
+    <string name="navigation_settings_title">Navigation Settings</string>
 
     <!-- Navigation bar button style -->
     <string name="nav_bar_button_style">Button style</string>
@@ -833,5 +834,8 @@
     <string name="nav_button_color_mode_dialog_title">Colorize</string>
     <string name="nav_button_color_mode_summary">Change the navigation bar button color mode</string>
     <string name="navigation_bar_glow_tint_title">Button glow color</string>
+
+    <!-- Navring targets (enable/disable) -->
+    <string name="navigation_ring_enable_title">Enable navigation rings</string>
 
 </resources>
