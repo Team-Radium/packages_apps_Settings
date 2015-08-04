@@ -781,10 +781,13 @@
     <string name="dim_nav_buttons_touch_anywhere_summary_on">Touching anywhere on the screen will cause buttons to un-dim</string>
     <string name="dim_nav_buttons_touch_anywhere_summary_off">Only touches on the navbar will cause buttons to un-dim</string>
 
+<<<<<<< HEAD
     <!-- MSIM Switch -->
     <string name="msim_title">MultiSIM Mode</string>
     <string name="msim_enabled_title">Enabled</string>
     <string name="msim_disabled_title">Disabled</string>
+=======
+>>>>>>> 631f5ddfbfe33feae2d47762d75fe085fb116401
 
     <!-- Navigation bar -->
     <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>

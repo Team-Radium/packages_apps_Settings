@@ -145,7 +145,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mSwapVolumeButtons;
     private SwitchPreference mEnableHwKeys;
     private SwitchPreference mEnableNavigationBar;
-    private SwitchPreference mDisableNavigationKeys;
     private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mNavigationRecentsLongPressAction;
     private SwitchPreference mPowerEndCall;
