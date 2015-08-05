@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cmremix.slim;
+package com.android.settings.radium.slim;
 
 import android.os.Bundle;
 import android.preference.SwitchPreference;
@@ -25,7 +25,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
-import com.android.internal.util.cmremix.DeviceUtils;
+import com.android.internal.util.radium.DeviceUtils;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;

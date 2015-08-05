@@ -341,8 +341,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             try {
                 IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
                 needsNavigationBar = wm.needsNavigationBar();
-            } catch (RemoteException e) {
-            }
+            } catch (RemoteException e) {}
+	}
 
         if (hasPowerKey) {
             if (!Utils.isVoiceCapable(context)) {
