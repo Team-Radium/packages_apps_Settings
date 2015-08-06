@@ -97,6 +97,13 @@
             android:title="@string/lockscreen_visualizer_title"
             android:defaultValue="true"
             settings:advanced="true"/>
+
+       <PreferenceScreen
+           android:key="lock_screen_weather_settings"
+           android:title="@string/lock_screen_weather_settings_title"
+           android:summary="@string/lock_screen_weather_settings_summary"
+           android:fragment="com.android.settings.radium.LockScreenWeatherSettings" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
