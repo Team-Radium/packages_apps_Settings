@@ -63,6 +63,12 @@
            android:summary="@string/lock_screen_weather_settings_summary"
            android:fragment="com.android.settings.radium.LockScreenWeatherSettings" />
 
+      <PreferenceScreen
+          android:key="lock_screen_color_settings"
+          android:title="@string/colors_title"
+          android:summary="@string/lock_screen_color_settings_summary"
+          android:fragment="com.android.settings.radium.LockScreenColorSettings" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
