@@ -56,4 +56,11 @@
             android:entryValues="@array/listview_interpolator_values"
             android:defaultValue="0" />
 
+        <!-- Three-fingers-swipe to screenshot -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="three_finger_gesture"
+            android:title="@string/three_finger_gesture"
+            android:summary="@string/three_finger_gesture_summary"
+            android:defaultValue="false" />
+
 </PreferenceScreen>

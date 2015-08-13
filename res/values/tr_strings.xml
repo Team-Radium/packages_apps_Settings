@@ -849,4 +849,8 @@
     <string name="weather_number_of_notifications_five_title">5</string>
     <string name="weather_number_of_notifications_six_title">6</string>
 
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Three finger gesture</string>
+    <string name="three_finger_gesture_summary">Swipe three finger to screenshot</string>
+
 </resources>
