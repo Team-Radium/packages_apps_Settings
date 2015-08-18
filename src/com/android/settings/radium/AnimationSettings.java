@@ -54,26 +54,18 @@ public class AnimationSettings extends SettingsPreferenceFragment implements
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mToastAnimation;
+    private ListPreference mScrollingCachePref;
 
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
-    private static final String DISABLE_TORCH_ON_SCREEN_OFF = "disable_torch_on_screen_off";
-    private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
     private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
     private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
     private static final String SCROLLINGCACHE_DEFAULT = "1";
 
- 
     private final Configuration mCurConfig = new Configuration();
     private Context mContext;
 
-    private ListPreference mToastAnimation;
-    private ListPreference mListViewAnimation;
-    private ListPreference mListViewInterpolator;
-    private SwitchPreference mTorchOff;
-    private ListPreference mTorchOffDelay;
-    private ListPreference mScrollingCachePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,7 +92,7 @@ public class AnimationSettings extends SettingsPreferenceFragment implements
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);
-        
+
 	// Toast animation
         mToastAnimation = (ListPreference)findPreference(KEY_TOAST_ANIMATION);
         mToastAnimation.setSummary(mToastAnimation.getEntry());
@@ -109,18 +101,6 @@ public class AnimationSettings extends SettingsPreferenceFragment implements
         mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
         mToastAnimation.setOnPreferenceChangeListener(this);
 
-        mTorchOff = (SwitchPreference) prefSet.findPreference(DISABLE_TORCH_ON_SCREEN_OFF);
-        mTorchOffDelay = (ListPreference) prefSet.findPreference(DISABLE_TORCH_ON_SCREEN_OFF_DELAY);
-        int torchOffDelay = Settings.System.getInt(resolver,
-                Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, 10);
-        mTorchOffDelay.setValue(String.valueOf(torchOffDelay));
-        mTorchOffDelay.setSummary(mTorchOffDelay.getEntry());
-        mTorchOffDelay.setOnPreferenceChangeListener(this);
-
-        if (!QSUtils.deviceSupportsFlashLight(activity)) {
-            prefSet.removePreference(mTorchOff);
-            prefSet.removePreference(mTorchOffDelay);
-        }
 
         // Scrolling cache
         mScrollingCachePref = (ListPreference) prefSet.findPreference(SCROLLINGCACHE_PREF);
@@ -163,10 +143,11 @@ public class AnimationSettings extends SettingsPreferenceFragment implements
             return true;
         }
         if (preference == mScrollingCachePref) {
-            if (objValue != null) {
-                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String)objValue);
+            if (newValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String)newValue);
             return true;
         }
+      }
         return false;
     }
 
