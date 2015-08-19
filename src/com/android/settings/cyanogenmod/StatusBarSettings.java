@@ -23,7 +23,6 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.content.DialogInterface;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -38,11 +37,9 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
 import android.text.format.DateFormat;
 import android.text.Spannable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -139,19 +136,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         }
 
         ContentResolver resolver = getActivity().getContentResolver();
-
-        PreferenceScreen prefSet = getPreferenceScreen();
         
-       PackageManager pm = getPackageManager();
-       Resources systemUiResources;
-       try {
-           systemUiResources = pm.getResourcesForApplication("com.android.systemui");
-       } catch (Exception e) {
-           Log.e(TAG, "can't access systemui resources",e);
-          return null;
-       }
-       
-       
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
@@ -277,7 +262,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-		if (!mCheckPreferences) {
+	if (!mCheckPreferences) {
             return false;
         }
          AlertDialog dialog;
