@@ -82,7 +82,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DATE_STYLE = "status_bar_date_style";
     private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
     private static final String PREF_FONT_STYLE = "font_style";
-  
+
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
@@ -132,7 +132,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         }
 
         ContentResolver resolver = getActivity().getContentResolver();
-        
+
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
@@ -190,7 +190,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
-        
+
         int showDate = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_DATE, 0);
         mStatusBarDate.setValue(String.valueOf(showDate));
@@ -206,7 +206,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarDateFormat.setOnPreferenceChangeListener(this);
         mStatusBarDateFormat.setSummary(mStatusBarDateFormat.getEntry());
         if (mStatusBarDateFormat.getValue() == null) {
-            mStatusBarDateFormat.setValue("EEE");
+            mStatusBarDateFormat.setValue("dd/MM/yy");
         }
 
         parseClockDateFormats();
@@ -217,7 +217,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
-       
+
         mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
         mColorPicker.setOnPreferenceChangeListener(this);
         int intColor = Settings.System.getInt(getActivity().getContentResolver(),
