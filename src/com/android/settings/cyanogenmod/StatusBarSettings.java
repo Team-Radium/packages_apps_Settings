@@ -128,7 +128,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             systemUiResources = pm.getResourcesForApplication("com.android.systemui");
         } catch (Exception e) {
             Log.e(TAG, "can't access systemui resources",e);
-            return;
+            return null;
         }
 
         ContentResolver resolver = getActivity().getContentResolver();
@@ -241,7 +241,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
-        return ;
+        return prefSet;
     }
 
     @Override
