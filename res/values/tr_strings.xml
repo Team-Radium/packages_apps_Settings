@@ -925,4 +925,9 @@
     <string name="device_maintainer">Device maintainer</string>
     <string name="device_maintainers">Device maintainers</string>
 
+    <!--Time Contexual Header -->
+    <string name="notification_title">Notification panel</string>
+    <string name="status_bar_custom_header_title">Custom header image</string>
+    <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+
 </resources>
