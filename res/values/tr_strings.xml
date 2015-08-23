@@ -312,6 +312,7 @@
     <string name="shortcut_action_media_play_pause">Music - play/pause</string>
     <string name="shortcut_action_media_previous">Music - previous track</string>
     <string name="shortcut_action_wake_device">Wake up device</string>
+    <string name="shortcut_action_theme_switch">Theme switcher</string>
 
     <!-- LockClocK -->
     <string name="lock_clock_title">Clock widget settings</string>
