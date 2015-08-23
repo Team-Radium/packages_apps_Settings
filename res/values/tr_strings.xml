@@ -34,6 +34,7 @@
     <string name="dlg_reset_values_message">Reset values to\nAndroid- or Radium default?</string>
     <string name="dlg_reset_android">Android</string>
     <string name="dlg_reset_radium">Radium</string>
+    <string name="reset_default_message">Reset default</string>
 
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic</string>

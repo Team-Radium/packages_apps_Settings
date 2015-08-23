@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cmremix.themes;
+package com.android.settings.radium.themes;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -22,8 +22,8 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
-import com.android.internal.util.cmremix.ActionConstants;
-import com.android.internal.util.cmremix.Action;
+import com.android.internal.util.radium.RadiumActionConstants;
+import com.android.internal.util.radium.Action;
 
 import com.android.settings.R;
 
@@ -67,7 +67,7 @@ public class ThemeEnabler implements OnPreferenceClickListener {
         if (mStateMachineEvent) {
             return true;
         }
-        Action.processAction(mContext, ActionConstants.ACTION_THEME_SWITCH, false);
+        Action.processAction(mContext, RadiumActionConstants.ACTION_THEME_SWITCH, false);
         setSwitchState();
         return true;
     }

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cmremix.themes;
+package com.android.settings.radium.themes;
 
 import android.app.ActionBar;
 import android.app.Activity;
