@@ -108,6 +108,14 @@
 	        android:icon="@drawable/ic_radium_isotopes"
 		/>      
 
+    <!-- TRDS -->
+        <dashboard-tile
+            android:id="@+id/theme_settings"
+            android:icon="@drawable/ic_settings_theme"
+            android:fragment="com.android.settings.cmremix.themes.ThemeSettings"
+            android:title="@string/theme_settings_title"
+             />
+
 	  <!-- Sound -->
         <dashboard-tile
                 android:id="@+id/sound_settings"
