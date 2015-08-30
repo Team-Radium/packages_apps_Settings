@@ -603,6 +603,7 @@
     <!-- ======================================================================================= -->
 
     <!-- Button label for generic cancel action [CHAR LIMIT=20] -->
+
     <string name="cancel">Cancel</string>
 
     <!-- Button label for generic cancel action in all caps [CHAR LIMIT=20] -->

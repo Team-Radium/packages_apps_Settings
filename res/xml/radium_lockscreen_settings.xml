@@ -15,8 +15,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/radium_lockscreen_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-    
-        
+
+
          <PreferenceScreen
                  android:key="lockscreen_shortcuts"
                  android:fragment="com.android.settings.radium.dslv.ActionListViewSettings"
@@ -44,7 +44,7 @@
             android:key="double_tap_sleep_anywhere"
             android:title="@string/double_tap_sleep_anywhere_title"
             android:summary="@string/double_tap_sleep_anywhere_summary"/>
-      
+
       <PreferenceScreen
         android:key="lock_clock"
         android:title="@string/lock_clock_title"
@@ -53,5 +53,11 @@
             android:targetPackage="com.cyanogenmod.lockclock"
             android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
         </PreferenceScreen>
-    
+
+        <PreferenceScreen
+            android:key="lockscreen_colors"
+            android:title="@string/lockscreen_colors"
+            android:layout="@layout/preference_lockscreencolors"
+            android:fragment="com.android.settings.radium.LockscreenColors" />
+
 </PreferenceScreen>
