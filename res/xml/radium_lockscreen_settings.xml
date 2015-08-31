@@ -57,7 +57,6 @@
         <PreferenceScreen
             android:key="lockscreen_colors"
             android:title="@string/lockscreen_colors"
-            android:layout="@layout/preference_lockscreencolors"
             android:fragment="com.android.settings.radium.LockscreenColors" />
 
 </PreferenceScreen>
