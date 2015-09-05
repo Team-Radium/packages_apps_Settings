@@ -29,7 +29,6 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.hardware.CmHardwareManager;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.Handler;
@@ -57,6 +56,8 @@ import com.android.settings.cyanogenmod.ButtonBacklightBrightness;
 
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+
+import cyanogenmod.hardware.CMHardwareManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -356,8 +357,33 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final boolean showCameraWake = (deviceWakeKeys & KEY_MASK_CAMERA) != 0;
         final boolean showVolumeWake = (deviceWakeKeys & KEY_MASK_VOLUME) != 0;
 
-        final CmHardwareManager cmHardwareManager =
-                (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
+        final CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+
+        // Only visible on devices that does not have a navigation bar already,
+        // and don't even try unless the existing keys can be disabled
+        boolean needsNavigationBar = false;
+        if (hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
+            try {
+                IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+                needsNavigationBar = wm.needsNavigationBar();
+            } catch (RemoteException e) {
+            }
+
+            if (needsNavigationBar) {
+                result.put(DISABLE_NAV_KEYS, null);
+            } else {
+                // Remove keys that can be provided by the navbar
+                if (settings != null) {
+                    settings.updateDisableNavkeysOption();
+                    settings.mNavigationPreferencesCat.setEnabled(
+                            settings.mDisableNavigationKeys.isChecked());
+                    settings.updateDisableNavkeysCategories(
+                            settings.mDisableNavigationKeys.isChecked());
+                }
+            }
+        } else {
+            result.put(DISABLE_NAV_KEYS, null);
+        }
 
         if (hasPowerKey) {
             if (!Utils.isVoiceCapable(context)) {
@@ -502,6 +528,26 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             }
         } else {
             result.put(CATEGORY_VOLUME, null);
+        }
+
+        try {
+            // Only show the navigation bar category on devices that have a navigation bar
+            // unless we are forcing it via development settings
+            boolean forceNavbar = android.provider.Settings.Secure.getInt(resolver,
+                    android.provider.Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
+            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
+                    || forceNavbar;
+
+            if (!ScreenType.isPhone(context)) {
+                result.put(KEY_NAVIGATION_BAR_LEFT, CATEGORY_NAVBAR);
+            }
+
+            if (!hasNavBar && (needsNavigationBar ||
+                    !hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE))) {
+                result.put(CATEGORY_NAVBAR, null);
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
         }
 
         if (!ButtonBacklightBrightness.isButtonSupported(context) &&
@@ -783,11 +829,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final int defaultBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
 
-        Settings.System.putInt(context.getContentResolver(),
-                Settings.System.ENABLE_HW_KEYS, enabled ? 1 : 0);
-        CmHardwareManager cmHardwareManager =
-                (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
-        cmHardwareManager.set(CmHardwareManager.FEATURE_KEY_DISABLE, !enabled);
+        Settings.Secure.putInt(context.getContentResolver(),
+                Settings.Secure.DEV_FORCE_SHOW_NAVBAR, enabled ? 1 : 0);
+        CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+        hardware.set(CMHardwareManager.FEATURE_KEY_DISABLE, !enabled);
 
         /* Save/restore button timeouts to disable them in softkey mode */
         if (!enabled) {
@@ -851,9 +896,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     public static void restoreKeyDisabler(Context context) {
-        CmHardwareManager cmHardwareManager =
-                (CmHardwareManager) context.getSystemService(Context.CMHW_SERVICE);
-        if (!cmHardwareManager.isSupported(CmHardwareManager.FEATURE_KEY_DISABLE)) {
+        CMHardwareManager hardware = CMHardwareManager.getInstance(context);
+        if (!hardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
             return;
         }
 
