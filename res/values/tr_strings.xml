@@ -921,4 +921,8 @@
     <string name="lockscreen_colors_reset_message">Are you sure you want to reset these colors to default?</string>
     <string name="yes">YES</string>
 
+    <!-- About phone screen, Radium device maintainer name -->
+    <string name="device_maintainer">Device maintainer</string>
+    <string name="device_maintainers">Device maintainers</string>
+
 </resources>
