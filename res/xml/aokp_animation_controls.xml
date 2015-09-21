@@ -64,6 +64,8 @@
             android:title="@string/task_open_behind_title" />
             
         <com.android.settings.radium.AnimBarPreference
+
+        <SlimSeekBarPreference
             android:key="animation_duration"
             android:title="@string/animation_duration_title" />
 

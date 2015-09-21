@@ -688,7 +688,172 @@
     <string name="qs_transparent_shade_title">Shade alpha</string>
     <string name="qs_transparent_shade_summary">Ability to apply color alpha value and make notification shade transparent.</string>
     <string name="qs_color_switch_title">Custom color switch</string>
-    <string name="qs_color_switch_summary">SystemUI will be restarted!</string>
+    <string name="qs_color_switch_summary">Toggle to control various custom quicksettings color options below</string>
+
+    <!-- Navigation bar button color -->
+    <string name="navbar_button_tint_title">Navigation button tint</string>
+
+    <!-- AOKP custom system animations -->
+    <string name="aokp_animation_title">System animations</string>
+    <string name="aokp_animation_summary">AOKP custom animation</string>
+    <string name="activity_open_title">Activity open animation</string>
+    <string name="activity_close_title">Activity close animation</string>
+    <string name="task_open_title">Task open animation</string>
+    <string name="task_close_title">Task close animation</string>
+    <string name="task_move_to_front_title">Move to front animation</string>
+    <string name="task_move_to_back_title">Move to back animation</string>
+    <string name="wallpaper_open_title">Wallpaper open animation</string>
+    <string name="wallpaper_close_title">Wallpaper close animation</string>
+    <string name="wallpaper_intra_open_title">Wallpaper intra open animation</string>
+    <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
+    <string name="task_open_behind_title">Task open behind animation</string>
+    <string name="animation_duration_title">Animation duration</string>
+    <string name="animation_duration_default">Duration (in milliseconds) of the above-selected system animations</string>
+    <string name="title_animation_no_override">Prevent App Overrides</string>
+    <string name="summary_animation_no_override">Prevent apps from overriding transitions.</string>
+    <string name="animation_exit_only_title">Enter only animation</string>
+    <string name="animation_reverse_exit_title">Reverse exit animation</string>
+
+    <!-- The volume key answer -->
+    <string name="volume_answer_call_title">Volume key Answer</string>
+    <string name="volume_answer_call_summary">Volume up key Answer</string>
+
+    <!-- Doze pulse (ambient display) options -->
+    <string name="doze_overwrite_value_title">Overwrite value</string>
+    <string name="doze_overwrite_value_summary">Allow to overwrite default value with user config</string>
+
+    <string name="doze_list_mode_title">Doze mode</string>
+    <string name="doze_list_mode_summary">Option to configure doze mode</string>
+
+    <string name="doze_pulse_title">Time settings</string>
+    <string name="doze_pulse_duration_in_title">Fade in</string>
+    <string name="doze_pulse_duration_in_summary"></string>
+
+    <string name="doze_pulse_duration_visible_title">Visible duration</string>
+    <string name="doze_pulse_duration_visible_summary"></string>
+
+    <string name="doze_pulse_duration_out_title">Fade out</string>
+    <string name="doze_pulse_duration_out_summary"></string>
+
+    <string name="doze_pulse_on_notifications_title">Pulse doze</string>
+    <string name="doze_pulse_on_notifications_summary">Pulse display on pending notifications</string>
+
+    <string name="doze_shake_title">Shake settings</string>
+    <string name="doze_shake_mode_title">Shake mode</string>
+    <string name="doze_shake_mode_summary">Use shake sensor value to trigger activation</string>
+    <string name="doze_shake_mode_test_summary">Do you want to test shake sensor?</string>
+    <string name="doze_shake_mode_test_result">Apply current value?</string>
+    <string name="doze_shake_test">Shake your device now</string>
+    <string name="doze_shake_it">Shake detected!</string>
+
+    <string name="doze_shake_acc_threshold_title">Shake threshold</string>
+    <string name="doze_shake_acc_threshold_summary">Configure shake strength required to trigger activation</string>
+
+    <string name="doze_time_mode_title">Show clock and date</string>
+    <string name="doze_time_mode_summary">Force showing time when there is no notification</string>
+
+    <string name="doze_brightness_title">Doze brightness level</string>
+    <string name="doze_brightness_summary">Brightness level of doze pulse screen (% of max allowed brightness)</string>
+
+    <string name="twohundred_ms">200 ms</string>
+    <string name="fivehundred_ms">500 ms</string>
+    <string name="one_second">1 s</string>
+    <string name="one_second_default">1 s (default)</string>
+    <string name="onehalf_second">1.5 s</string>
+    <string name="two_second">2 s</string>
+    <string name="twohalf_second">2.5 s</string>
+    <string name="three_second">3 s</string>
+    <string name="three_second_default">3 s (default)</string>
+    <string name="threehalf_second">3.5 s</string>
+    <string name="four_second">4 s</string>
+    <string name="fourhalf_second">4.5 s</string>
+    <string name="five_second">5 s</string>
+
+    <string name="veryeasy_shake">Very easy</string>
+    <string name="easy_shake">Easy</string>
+    <string name="medium_shake">Default</string>
+    <string name="hard_shake">Hard</string>
+    <string name="veryhard_shake">Very hard</string>
+    <string name="strong_shake">Strong</string>
+
+    <string name="fully_mode">Full mode</string>
+    <string name="pocket_shake_mode">Pocket and shake</string>
+    <string name="pocket_pulse_mode">Pocket and pulse</string>
+    <string name="pocket_only_mode">Pocket</string>
+    <string name="shake_pulse_mode">Shake and pulse</string>
+    <string name="pulse_only_mode">Pulse (default)</string>
+
+    <!-- Show carrier label and custom -->
+    <string name="carrier_options">Carrier Label</string>
+    <string name="show_status_bar_carrier_title">Status bar carrier</string>
+    <string name="show_status_bar_carrier_summary">Show carrier in status bar</string>
+    <string name="custom_carrier_label_title">Custom carrier label</string>
+    <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
+    <string name="custom_carrier_label_notset">Custom label currently not set</string>
+    <string name="status_bar_carrier_color">Carrier label color</string>
+    <string name="show_carrier_disabled">Disabled</string>
+    <string name="show_carrier_keyguard">Lockscreen only</string>
+    <string name="show_carrier_statusbar">Statusbar only</string>
+    <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
+    <string name="status_bar_carrier_size">Carrier label text size</string>
+
+    <!-- Statusbar AICP logo -->
+    <string name="status_bar_aicp_logo_title">AICP logo</string>
+    <string name="status_bar_aicp_logo_summary">Enable to show AICP logo on the left side of statusbar</string>
+    <string name="status_bar_aicp_logo_color">AICP logo color</string>
+    <string name="status_bar_aicp_logo_position">Logo Location</string>
+    <string name="status_bar_aicp_logo_position_summary">Choose which side to display the logo on, left or right</string>
+    <string name="status_bar_logo_position_right">Right</string>
+    <string name="status_bar_logo_position_left">Left</string>
+
+    <!-- Volume pane timeout -->
+    <string name="volume_panel_time_out_title">Volume panel timeout</string>
+    <string name="volume_panel_time_out_summary">Hide before <xliff:g id="number">%d</xliff:g> seconds. Auto hide on touch outside</string>
+    <string name="volume_panel_time_out_1.5sec">1 and a half sec</string>
+    <string name="volume_panel_time_out_3sec">3 seconds (default)</string>
+    <string name="volume_panel_time_out_5sec">5 seconds</string>
+    <string name="volume_panel_time_out_8sec">8 seconds</string>
+    <string name="volume_panel_time_out_12sec">12 seconds</string>
+    <string name="volume_panel_time_out_15sec">15 seconds</string>
+
+    <!-- long press back to kill configurable timeout -->
+    <string name="kill_app_longpress_timeout_title">Long press timeout</string>
+    <string name="timeout_2000">2 seconds (default)</string>
+    <string name="timeout_1500">1 and a half sec</string>
+    <string name="timeout_1000">1 second</string>
+    <string name="timeout_750">Zero seven fifty sec</string>
+    <string name="timeout_500">Half a second</string>
+
+    <!-- Status bar greeting -->
+    <string name="status_bar_greeting_category_title">Statusbar greeting</string>
+    <string name="status_bar_greeting_title">Greeting</string>
+    <string name="status_bar_greeting_summary">Display a custom greeting in the status bar after unlocking the device</string>
+    <string name="status_bar_greeting_dialog">Set your greeting</string>
+    <string name="status_bar_greeting_main">Flash ON!!!</string>
+    <string name="status_bar_greeting_timeout_title">Greeting timeout</string>
+
+    <!-- Force expand notifications -->
+    <string name="notification_force_expand_title">Force expanded notification</string>
+    <string name="notification_force_expand_summary">Force expanded notifications on all apps that support it</string>
+
+    <!-- Slim Shortcuts -->
+    <string name="slim_shortcut_picker">Slim Actions</string>
+    <string name="qs_tile_slimaction">SlimAction</string>
+    <string name="qs_slim_action_summary">Add and set the order of SlimActions for SlimAction tile</string>
+    <string name="qs_slim_action_title">SlimActions</string>
+
+    <!-- Double tap gesture anywhere on the lock screen put device to sleep -->
+    <string name="double_tap_sleep_anywhere_title">Double-tap to sleep anywhere</string>
+    <string name="double_tap_sleep_anywhere_summary">Double tap anywhere on the lockscreen to put the device to sleep</string>
+
+    <!-- Wakelock blocker -->
+    <string name="wakelock_blocker_title">Wakelock blocker</string>
+    <string name="wakelock_blocker_summary">Block system wakelocks</string>
+    <string name="wakelock_blocker_save">Save</string>
+    <string name="wakelock_list_header">Available wakelocks</string>
+    <string name="wakelock_blocker_reload">Reload</string>
+    <string name="wakelock_blocker_warning_title">Proceed with caution</string>
+    <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss</string>
 
     <!-- Heads Up -->
     <string name="heads_up_summary">More heads up options</string>
