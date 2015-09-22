@@ -776,10 +776,10 @@
   <string name="whisperpush_summary">Spravovat nastavení zabezpečených SMS</string>
   <string name="navigation_ring_title">Položky navigačního prstence</string>
   <string name="navigation_ring_message">Klepněte na ikonu pro upravení navigačního prstence.\n\nVyberte cíl pro konfiguraci jeho chování.\n\nDotykem na ikonu „\u2713“ uložíte provedené změny, pomocí „Obnovit výchozí“ bude provedeno obnovení nastavení na výchozí hodnoty.</string>
-  <string name="lcd_density">LCD hustota</string>
-  <string name="dialog_title_lcd_density">LCD hustota</string>
-  <string name="lcd_density_value_format">%1$d DPI (výchozí: %2$d DPI)</string>
-  <string name="lcd_density_default_value_format">%1$d DPI (výchozí)</string>
+  <string name="lcd_density">Hustota LCD</string>
+  <string name="dialog_title_lcd_density">Hustota LCD</string>
+  <string name="lcd_density_value_format">%d DPI</string>
+  <string name="lcd_density_default_value_format">%d DPI (výchozí)</string>
   <string name="restarting_ui">Restartování UI\u2026</string>
   <string name="stylus_icon_enabled_title">Zobrazit ikonu při používání stylusu</string>
   <string name="stylus_icon_enabled_summary">Zobrazit ikonu ukazatele při kreslení se stylusem</string>

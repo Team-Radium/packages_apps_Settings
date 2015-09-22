@@ -777,8 +777,8 @@
   <string name="navigation_ring_message">Tocca l\'icona di modifica per modificare l\'anello di navigazione.\n\nSeleziona un collegamento per configurarne il comportamento.\n\nTocca l\'icona \'\u2713\' per salvare le modifiche, o \'Ripristina le impostazioni predefinite\' per ritornare ai valori predefiniti.</string>
   <string name="lcd_density">Densità LCD</string>
   <string name="dialog_title_lcd_density">Densità LCD</string>
-  <string name="lcd_density_value_format">%1$d DPI (default: %2$d DPI)</string>
-  <string name="lcd_density_default_value_format">%1$d DPI (default)</string>
+  <string name="lcd_density_value_format">%d DPI</string>
+  <string name="lcd_density_default_value_format">%d DPI (predefinito)</string>
   <string name="restarting_ui">Riavvio UI\u2026</string>
   <string name="stylus_icon_enabled_title">Mostra l\'icona quando utilizzi lo stilo</string>
   <string name="stylus_icon_enabled_summary">Mostra l\'icona del puntatore durante il movimento o il disegno con lo stilo</string>

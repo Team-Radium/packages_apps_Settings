@@ -775,8 +775,8 @@
   <string name="navigation_ring_message">Dotknij ikonę edycji, aby otworzyć edycję pierścienia nawigacyjnego.\n\nWybierz cel, aby skonfigurować jego działanie.\n\nDotknij ikonę  \'\u2713\', aby zapisać swoje ustawienia, lub \'Przywróć domyślne\', aby przywrócić domyślne wartości.</string>
   <string name="lcd_density">Gęstość LCD</string>
   <string name="dialog_title_lcd_density">Gęstość LCD</string>
-  <string name="lcd_density_value_format">%1$d DPI (Domyślnie: %2$d DPI)</string>
-  <string name="lcd_density_default_value_format">%1$d DPI (domyślnie)</string>
+  <string name="lcd_density_value_format">%d DPI</string>
+  <string name="lcd_density_default_value_format">%d DPI (domyślnie)</string>
   <string name="restarting_ui">Uruchamianie ponownie\u2026</string>
   <string name="stylus_icon_enabled_title">Pokaż ikonę podczas używania rysika</string>
   <string name="stylus_icon_enabled_summary">Pokaż ikonę wskaźnika podczas wskazywania lub rysowania rysikiem</string>
