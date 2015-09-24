@@ -910,7 +910,7 @@
     <string name="reset_user_preferences_dialog">Are you sure you want to reset your preferences?</string>
 
     <!-- Lockscreen Colors -->
-    <string name="lockscreen_colors">Lockscreen Colors</string>
+    <string name="lockscreen_colors">Lockscreen Theming</string>
     <string name="lockscreen_phone_icon_color">Lockscreen Bottom Left shortcut</string>
     <string name="lockscreen_lock_icon_color">Lockscreen Lock icon</string>
     <string name="lockscreen_camera_icon_color">Lockscreen Bottom Right shortcut</string>
