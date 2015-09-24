@@ -25,10 +25,11 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.SwitchPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
-import android.preference.ListPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.SlimSeekBarPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -41,8 +42,10 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PowerMenuActions extends SettingsPreferenceFragment {
+public class PowerMenuActions extends SettingsPreferenceFragment
+         implements OnPreferenceChangeListener {
     final static String TAG = "PowerMenuActions";
+    private static final String PREF_ON_THE_GO_ALPHA = "on_the_go_alpha";
 
     private SwitchPreference mRebootPref;
     private SwitchPreference mScreenshotPref;
@@ -54,6 +57,7 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     private SwitchPreference mBugReportPref;
     private SwitchPreference mSilentPref;
     private SwitchPreference mOnTheGoPref;
+    private SlimSeekBarPreference mOnTheGoAlphaPref;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
@@ -100,6 +104,11 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mOnTheGoPref = (SwitchPreference) findPreference(GLOBAL_ACTION_KEY_ONTHEGO);
             }
         }
+
+        mOnTheGoAlphaPref = (SlimSeekBarPreference) findPreference(PREF_ON_THE_GO_ALPHA);
+        mOnTheGoAlphaPref.setDefault(50);
+        mOnTheGoAlphaPref.setInterval(1);
+        mOnTheGoAlphaPref.setOnPreferenceChangeListener(this);
 
         getUserConfig();
     }
@@ -213,6 +222,17 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
         return true;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mOnTheGoAlphaPref) {
+            float val = Float.parseFloat((String) newValue);
+            Settings.System.putFloat(mCr, Settings.System.ON_THE_GO_ALPHA,
+                    val / 100);
+            return true;
+        }
+        return false;
     }
 
     private boolean settingsArrayContains(String preference) {
