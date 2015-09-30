@@ -228,8 +228,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mOnTheGoAlphaPref) {
             float val = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(mCr, Settings.System.ON_THE_GO_ALPHA,
-                    val / 100);
+            Settings.System.putFloat(getActivity().getContentResolver(),
+			 Settings.System.ON_THE_GO_ALPHA, val / 100);
             return true;
         }
         return false;
